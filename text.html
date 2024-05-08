@@ -20,7 +20,7 @@
         </style>
     </head>
     <body onload="gettextdata()">
-        <div class="loader"></div>
+        <div class="loader" id="nc"></div>
         <div id="xd"></div>
         <script>
             function gettextdata(){
@@ -44,24 +44,15 @@
                     .then(data =>{
                         console.log(data); 
                         var container = document.getElementById('xd');
+                        var element = document.getElementById("nc");
                         var newElement = document.createElement('h2');
+                        element.classList.remove("loader");
                         newElement.textContent = data;
                         container.appendChild(newElement);
                 });
                 
             }
             
-        </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js">
-            $(document).ready(function() {
-                // 选择div元素
-                 var $div = $('#xd');
-    
-                // 判断div中是否包含子元素
-                if ($div.children().length > 0) {
-                    $('.loader', $div).remove();
-                }
-            });
         </script>
     </body>
 </html>
