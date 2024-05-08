@@ -21,7 +21,7 @@
     </head>
     <body onload="gettextdata()">
         <div id="xd" class="loader"></div>
-        <script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js">
             function gettextdata(){
                 var urlParams = new URLSearchParams(window.location.search);
                 var id = urlParams.has('id') ? urlParams.get('id') : 'ID参数未提供';
