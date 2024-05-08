@@ -5,68 +5,62 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
         <style>
-            .form__group {
+            .form {
               position: relative;
-              padding: 20px 0 0;
-              width: 100%;
-              max-width: 180px;
+              display: flex;
+              align-items: flex-start;
+              flex-direction: column;
+              gap: 10px;
+              width: 300px;
+              background-color: white;
+              padding: 20px;
+              border-radius: 10px;
+              box-shadow: 0 30px 30px -30px rgba(27, 26, 26, 0.315);
             }
             
-            .form__field {
-              font-family: inherit;
-              width: 100%;
-              border: none;
-              border-bottom: 2px solid #9b9b9b;
+            .form .title {
+              color: royalblue;
+              font-size: 30px;
+              font-weight: 600;
+              letter-spacing: -1px;
+              line-height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            
+            .form input {
               outline: 0;
-              font-size: 17px;
+              border: 1px solid rgb(219, 213, 213);
+              padding: 8px 14px;
+              border-radius: 8px;
+              width: 100%;
+              height: 50px;
+            }
+            
+            .form textarea {
+              border-radius: 8px;
+              height: 100px;
+              width: 100%;
+              resize: none;
+              outline: 0;
+              padding: 8px 14px;
+              border: 1px solid rgb(219, 213, 213);
+            }
+            
+            .form button {
+              align-self: flex-end;
+              padding: 8px;
+              outline: 0;
+              border: 0;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: 500;
+              background-color: royalblue;
               color: #fff;
-              padding: 7px 0;
-              background: transparent;
-              transition: border-color 0.2s;
+              cursor: pointer;
             }
-            
-            .form__field::placeholder {
-              color: transparent;
-            }
-            
-            .form__field:placeholder-shown ~ .form__label {
-              font-size: 17px;
-              cursor: text;
-              top: 20px;
-            }
-            
-            .form__label {
-              position: absolute;
-              top: 0;
-              display: block;
-              transition: 0.2s;
-              font-size: 17px;
-              color: #9b9b9b;
-              pointer-events: none;
-            }
-            
-            .form__field:focus {
-              padding-bottom: 6px;
-              font-weight: 700;
-              border-width: 3px;
-              border-image: linear-gradient(to right, #116399, #38caef);
-              border-image-slice: 1;
-            }
-            
-            .form__field:focus ~ .form__label {
-              position: absolute;
-              top: 0;
-              display: block;
-              transition: 0.2s;
-              font-size: 17px;
-              color: #38caef;
-              font-weight: 700;
-            }
-            
-            /* reset input */
-            .form__field:required, .form__field:invalid {
-              box-shadow: none;
-            }
+                
         </style>
     </head>
     <body>    
@@ -81,22 +75,13 @@
                 <h1 style="color:greenyellow">CCHAS</h1>
             </div>
         </div>
-        <h1 style="position:relative;
-        top:100px;">文章编辑区域</h1>
-        <div class="bk">
-            <div>
-                <div class="form__group field" id="fuck">
-                    <input type="input" class="form__field" placeholder="文章标题" required="">
-                    <label for="name" class="form__label">Name</label>
-                </div>
-            </div>
-            <div id="hh">
-                <textarea placeholder="请输入您的文章" class="hh" id="shit"></textarea>
-            </div>
-            <div id="wc">
-                <button class="createtext" onclick="fuck()">新建文章</button>
-            </div>
-        </div>
+        <form class="form">
+            <div class="title">文章编辑区域</div>
+            <input type="text" placeholder="文章标题" class="input" id="fuck">
+            <textarea placeholder="请输入您的文章" id="shit"></textarea>
+             
+            <button>新建文章</button>
+        </form>
         <script>
             function fuck() {
                 var text = document.getElementById("shit").value;
