@@ -112,7 +112,7 @@
         <div id="man"></div>
     <script>
     function myFunction() {
-        fetch('http://127.0.0.1:5000/hello')
+        fetch('http://127.0.0.1:5000/api/hello')
             .then(response =>{
                 if(response.ok){
                     return response.text();
@@ -141,7 +141,7 @@
     })
 }
 function shitman(id){
-    fetch('http://api-save.kuke.ink/textXD/'+id)
+    fetch('http://api-save.kuke.ink/api/textXD/'+id)
         .then(response =>{
             if(response.ok){
                 return response.text();
