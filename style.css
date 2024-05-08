@@ -120,3 +120,14 @@
                 border:1px solid white;
                 border-radius:5px;
             }
+            .register{
+              position:fixed;
+                top:3px;
+                left:325px;
+                width:200px;
+                height:100px;
+                background-color:blue;
+                border:1px solid white;
+                border-radius:5px;
+                color:white;
+            }
