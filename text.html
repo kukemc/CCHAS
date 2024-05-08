@@ -4,23 +4,73 @@
         <title>文章 -共创家园文章社</title>
         <meta charset="utf-8">
         <style>
-            .loader {
-                border: 16px solid #f3f3f3; /* 边框宽度及颜色 */
-                border-top: 16px solid #3498db; /* 顶部边框颜色，用于视觉上的旋转效果 */
-                border-radius: 50%; /* 圆角使形状变为圆形 */
-                width: 120px;
-                height: 120px;
-                animation: spin 2s linear infinite; /* 动画名称、持续时间、速度曲线、循环次数 */
-  }
-
-            @keyframes spin {
-                0% { transform: rotate(0deg); } /* 初始状态 */
-                100% { transform: rotate(360deg); } /* 结束状态，完成一圈旋转 */
+            .container {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              border-radius: 50%;
+              height: 96px;
+              width: 96px;
+              animation: rotate_3922 1.2s linear infinite;
+              background-color: #9b59b6;
+              background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+            }
+            
+            .container span {
+              position: absolute;
+              border-radius: 50%;
+              height: 100%;
+              width: 100%;
+              background-color: #9b59b6;
+              background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+            }
+            
+            .container span:nth-of-type(1) {
+              filter: blur(5px);
+            }
+            
+            .container span:nth-of-type(2) {
+              filter: blur(10px);
+            }
+            
+            .container span:nth-of-type(3) {
+              filter: blur(25px);
+            }
+            
+            .container span:nth-of-type(4) {
+              filter: blur(50px);
+            }
+            
+            .container::after {
+              content: "";
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              right: 10px;
+              bottom: 10px;
+              background-color: #fff;
+              border: solid 5px #ffffff;
+              border-radius: 50%;
+            }
+            
+            @keyframes rotate_3922 {
+              from {
+                transform: translate(-50%, -50%) rotate(0deg);
+              }
+            
+              to {
+                transform: translate(-50%, -50%) rotate(360deg);
+              }
             }
         </style>
     </head>
     <body onload="gettextdata()">
-        <div class="loader" id="nc"></div>
+        <div class="container">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div id="xd"></div>
         <script>
             function gettextdata(){
@@ -46,7 +96,7 @@
                         var container = document.getElementById('xd');
                         var element = document.getElementById("nc");
                         var newElement = document.createElement('h2');
-                        element.classList.remove("loader");
+                        element.classList.remove("container");
                         newElement.textContent = data;
                         container.appendChild(newElement);
                 });
