@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>文章 -共创家园文章社</title>
+        <meta charset="utf-8">
+    </head>
+    <body onload="gettextdata()">
+        <div id="xd"></div>
+        <script>
+            function gettextdata(){
+                var urlParams = new URLSearchParams(window.location.search);
+                var id = urlParams.has('id') ? urlParams.get('id') : 'ID参数未提供';
+                console.log('http://127.0.0.1:5000/textXD/'+id);
+                fetch('http://127.0.0.1:5000/textXD/'+id)
+                    .then(response =>{
+                        if(response.ok){
+                            return response.text();
+                        }
+                    })
+                    .then(data =>{
+                        console.log(data); 
+                        var container = document.getElementById('xd');
+                        var newElement = document.createElement('h2');
+                        newElement.textContent = data;
+                        container.appendChild(newElement);
+                });
+                
+            }
+        </script>
+    </body>
+</html>

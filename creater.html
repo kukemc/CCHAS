@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>文章中心 -共创家园文章社</title>
+        <meta charset="utf-8">
+        <style>
+            .nb{
+                position:fixed;
+                top:10px;
+                width:1900px;
+                height:50px;
+                
+                background-color:#C0D9D9;
+                border:1px solid white;
+                border-radius:5px;
+            }
+            .nb3{
+                position:relative;
+                top:80px;
+                width:500px;
+                height:150px;
+                color:blanchedalmond;
+                background-color:#C0D9D9;
+                border:1px solid white;
+                border-radius:5px;
+            }
+            .index{
+                position:fixed;
+                top:2px;
+                left:50px;
+                color:aquamarine
+            }
+            .indexbq{
+                position:fixed;
+                top:3px;
+                left:200px;
+                color:white;
+            }
+            .createrbq{
+                position:fixed;
+                top:3px;
+                left:325px;
+                color:white;
+            }
+            .createtext{
+                position:relative;
+                top:315px;
+                left:450px;
+                width:50px;
+                height:50px;
+                background-color:#C0D9D9;
+                border:1px solid white;
+                border-radius:5px;
+            }
+            .hh{
+                position:relative;
+                top:0px;
+                width:500px;
+                height:250px;
+                background-color:#C0D9D9;
+                border:1px solid white;
+                border-radius:5px;
+            }
+            .bk{
+                position:relative;
+                top:80px;
+                width:530px;
+                height:400px;
+                border:5px solid grey;
+                border-radius:5px;
+            }
+            .bttext{
+                position:relative;
+                top:40px;
+                width:500px;
+                height:25px;
+                background-color:#C0D9D9;
+                border:1px solid white;
+                border-radius:5px;
+            }
+        </style>
+    </head>
+    <body>    
+        <div class="nb">
+            <h3 class="index">标签栏  |</h3>
+            <a href="index.html"><h4 class="indexbq">首页</h4></a>
+            <a href="creater.html"><h4 class="createrbq">文章中心</h4></a>
+        </div>
+        <div class="nb3">
+            <h1>共创家园文章社</h1>
+            <h1 style="color:greenyellow">CCHAS</h1>
+        </div>
+        <h1 style="position:relative;
+        top:100px;">文章编辑区域</h1>
+        <div class="bk">
+            <div>
+                <input placeholder="请输入您的文章标题" class="bttext" id="fuck"></input>
+            </div>
+            <div id="wc">
+                <button class="createtext" onclick="fuck()">新建文章</button>
+            </div>
+            <div id="hh">
+                <textarea placeholder="请输入您的文章" class="hh" id="shit"></textarea>
+            </div>
+        </div>
+        <script>
+            function fuck() {
+                var text = document.getElementById("shit").value;
+                var fuck = document.getElementById("fuck").value;
+                var id = Math.floor(10000000 + Math.random() * 90000000).toString();
+                console.log(text);
+                fetch('http://127.0.0.1:5000/text', {
+                    method: 'POST', // 指定请求方法为POST
+                    headers: {
+                    'Content-Type': 'application/json', // 告诉服务器发送的是JSON格式的数据
+                },
+                body: JSON.stringify({ 
+                    key: text,
+                    fuck: fuck,
+                    id: id
+                }), // 将数据转换为JSON字符串形式
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json(); // 如果服务器返回的是JSON格式的数据，这里进行解析
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    document.getElementById("shit").value = "";
+                    document.getElementById("fuck").value = "";
+                    location.reload();
+                    alert('上传成功！');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+        </script>
+    </body>
+</html>

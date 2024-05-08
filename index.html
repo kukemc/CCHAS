@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>首页 -共创家园文章社</title>
+        <meta charset="utf-8">
+        <style>
+            .nb{
+                position:fixed;
+                top:10px;
+                width:1900px;
+                height:50px;
+                
+                background-color:#C0D9D9;
+                border:1px solid white;
+                border-radius:5px;
+            }
+            .nb2{
+                position:relative;
+                top:60px;
+                left:20px;
+                width:500px;
+                height:150px;
+                background-color:rgb(255, 243, 205);
+                border:1px solid white;
+                border-radius:5px;
+                color:aquamarine;
+            }
+            .nb3{
+                position:relative;
+                top:30px;
+                left:20px;
+                width:500px;
+                height:150px;
+                color:blanchedalmond;
+                background-color:#C0D9D9;
+                border:1px solid white;
+                border-radius:5px;
+            }
+            .index{
+                position:fixed;
+                top:2px;
+                left:50px;
+                color:aquamarine
+            }
+            .indexbq{
+                position:fixed;
+                top:3px;
+                left:200px;
+                color:white;
+            }
+            .createrbq{
+                position:fixed;
+                top:3px;
+                left:325px;
+                color:white;
+            }
+            .nbaa{
+                width:500px;height:150px;background-color:aquamarine;border-radius:5px;color:black;
+                transition: background-color 0.3s; /* 添加过渡效果，使颜色变化平滑 */
+            }
+            .nbaa:hover{
+                background-color: darkblue;
+                color: white; /* 如果元素内有文字，可以改变文字颜色以提高可读性 */
+            }
+            #man{
+                margin-top: 280px;
+                display: flex; /* 或者使用 'grid' */
+                flex-wrap: wrap; /* 对于Flexbox，允许换行 */
+                justify-content: flex-start; /* 根据需要调整对齐方式 */
+                gap: 10px; /* 间距，仅适用于Flexbox或Grid */
+            }
+            .sb{
+                position:relative;
+                top:170px;
+                left:0px;
+                width:300px;
+                height:50px;
+                background-color:aquamarine;
+                border:1px solid white;
+                border-radius:10px;
+                color:black;
+            }
+            .bbll{
+                position:relative;
+                top:100px;
+                left:0px;
+                width:1800px;
+                height:600px;
+                background-color:rgb(235, 226, 226);
+                border-radius:20px;
+                color:black;
+            }
+        </style>
+    </head>
+    <body onload="myFunction()">    
+        <div class="nb">
+            <h3 class="index">标签栏  |</h3>
+            <a href="index.html"><h4 class="indexbq" style="text-decoration: underline;">首页</h4></a>
+            <a href="creater.html"><h4 class="createrbq">文章中心</h4></a>
+        </div>
+        <div class="bbll">
+            <div class="nb3">
+                <h1>共创家园文章社</h1>
+                <h1 style="color:greenyellow">CCHAS</h1>
+            </div>
+            <div class="nb2">
+                <h1>本周优质文章创作者</h1>
+                <h2 style="color:aqua">xiaoyh</h2>
+            </div>
+        </div>
+        <h1 class="sb">下面为推荐文章内容</h1>
+        <div id="man"></div>
+    <script>
+    function myFunction() {
+        fetch('http://127.0.0.1:5000/hello')
+            .then(response =>{
+                if(response.ok){
+                    return response.text();
+                }
+            })
+            .then(data =>{
+                console.log(data); 
+                const jsonArray = JSON.parse(data);
+                // 遍历数组，直接访问并打印每个对象的键值
+                let i=0;
+                jsonArray.forEach(item => {
+                    console.log(`fuck: ${item.fuck}, key: ${item.key}`);
+                    let newElement = document.createElement('a');
+                    let wc;
+                    newElement.className = 'nbaa';
+                    newElement.href = 'text.html?id='+item.id;
+                    newElement.addEventListener('click', function() {
+                    shitman(item.id);
+                });
+                    console.log(wc);
+                    newElement.innerHTML = '<h1 style="color:grey">文章主题：</h1>' + '<center><h2>'+item.fuck+'</h2></center>';
+                    let targetElement = document.getElementById('man');
+                    targetElement.appendChild(newElement);
+                });
+                
+    })
+}
+function shitman(id){
+    fetch('http://127.0.0.1:5000/textXD/'+id)
+        .then(response =>{
+            if(response.ok){
+                return response.text();
+            }
+        })
+}
+    </script>
+    </body>
+</html>
