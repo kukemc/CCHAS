@@ -10,7 +10,7 @@
             function gettextdata(){
                 var urlParams = new URLSearchParams(window.location.search);
                 var id = urlParams.has('id') ? urlParams.get('id') : 'ID参数未提供';
-                console.log('http://api-save.kuke.ink/api/textXD/'+id);
+                console.log('https://api-save.kuke.ink/api/textXD/'+id);
                 fetch('https://api-save.kuke.ink/textXD/'+id)
                     。then(response =>{
                         if(response.ok){
