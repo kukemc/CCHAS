@@ -12,12 +12,12 @@
                 var id = urlParams.has('id') ? urlParams.get('id') : 'ID参数未提供';
                 console.log('https://api-save.kuke.ink/api/textXD/'+id);
                 fetch('https://api-save.kuke.ink/textXD/'+id)
-                    。then(response =>{
+                    .then(response =>{
                         if(response.ok){
                             return response.text();
                         }
                     })
-                    。then(data =>{
+                    .then(data =>{
                         console.log(data); 
                         var container = document.getElementById('xd');
                         var newElement = document.createElement('h2');
