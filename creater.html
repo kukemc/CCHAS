@@ -4,6 +4,70 @@
         <title>文章中心 -共创家园文章社</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            .form__group {
+              position: relative;
+              padding: 20px 0 0;
+              width: 100%;
+              max-width: 180px;
+            }
+            
+            .form__field {
+              font-family: inherit;
+              width: 100%;
+              border: none;
+              border-bottom: 2px solid #9b9b9b;
+              outline: 0;
+              font-size: 17px;
+              color: #fff;
+              padding: 7px 0;
+              background: transparent;
+              transition: border-color 0.2s;
+            }
+            
+            .form__field::placeholder {
+              color: transparent;
+            }
+            
+            .form__field:placeholder-shown ~ .form__label {
+              font-size: 17px;
+              cursor: text;
+              top: 20px;
+            }
+            
+            .form__label {
+              position: absolute;
+              top: 0;
+              display: block;
+              transition: 0.2s;
+              font-size: 17px;
+              color: #9b9b9b;
+              pointer-events: none;
+            }
+            
+            .form__field:focus {
+              padding-bottom: 6px;
+              font-weight: 700;
+              border-width: 3px;
+              border-image: linear-gradient(to right, #116399, #38caef);
+              border-image-slice: 1;
+            }
+            
+            .form__field:focus ~ .form__label {
+              position: absolute;
+              top: 0;
+              display: block;
+              transition: 0.2s;
+              font-size: 17px;
+              color: #38caef;
+              font-weight: 700;
+            }
+            
+            /* reset input */
+            .form__field:required, .form__field:invalid {
+              box-shadow: none;
+            }
+        </style>
     </head>
     <body>    
         <div class="nb">
@@ -21,7 +85,11 @@
         top:100px;">文章编辑区域</h1>
         <div class="bk">
             <div>
-                <input placeholder="请输入您的文章标题" class="bttext" id="fuck"></input>
+                <div class="form__group field" id="fuck">
+                    <input type="input" class="form__field" placeholder="文章标题" required="">
+                    <label for="name" class="form__label">Name</label>
+                </div>
+                // <input placeholder="请输入您的文章标题" class="bttext" id="fuck"></input>
             </div>
             <div id="wc">
                 <button class="createtext" onclick="fuck()">新建文章</button>
