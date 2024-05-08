@@ -121,9 +121,9 @@
                 border-radius:5px;
             }
             .register{
-              position:fixed;
+                position:fixed;
                 top:3px;
-                left:325px;
+                left:385px;
                 width:200px;
                 height:100px;
                 background-color:blue;
