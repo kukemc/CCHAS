@@ -4,6 +4,11 @@
         <title>文章 -共创家园文章社</title>
         <meta charset="utf-8">
         <style>
+            .text {
+              transition: opacity 1s;
+              opacity: 0;
+            }
+            
             .container {
               position: absolute;
               transition: opacity 1s;
@@ -73,7 +78,7 @@
           <span></span>
           <span></span>
         </div>
-        <div id="xd"></div>
+        <div class="text" id="xd"></div>
         <script>
             function gettextdata(){
                 var urlParams = new URLSearchParams(window.location.search);
@@ -96,6 +101,7 @@
                     .then(data =>{
                         console.log(data); 
                         var container = document.getElementById('xd');
+                        container.style.opacity = 1;
                         var element = document.getElementById("nc");
                         var newElement = document.createElement('h2');
                         element.style.opacity = 0;
