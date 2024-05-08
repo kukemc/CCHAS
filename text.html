@@ -3,9 +3,24 @@
     <head>
         <title>文章 -共创家园文章社</title>
         <meta charset="utf-8">
+        <style>
+            .loader {
+                border: 16px solid #f3f3f3; /* 边框宽度及颜色 */
+                border-top: 16px solid #3498db; /* 顶部边框颜色，用于视觉上的旋转效果 */
+                border-radius: 50%; /* 圆角使形状变为圆形 */
+                width: 120px;
+                height: 120px;
+                animation: spin 2s linear infinite; /* 动画名称、持续时间、速度曲线、循环次数 */
+  }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); } /* 初始状态 */
+                100% { transform: rotate(360deg); } /* 结束状态，完成一圈旋转 */
+            }
+        </style>
     </head>
     <body onload="gettextdata()">
-        <div id="xd"></div>
+        <div id="xd" class="loader"></div>
         <script>
             function gettextdata(){
                 var urlParams = new URLSearchParams(window.location.search);
