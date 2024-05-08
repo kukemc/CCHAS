@@ -109,8 +109,9 @@
                     console.log('Success:', data);
                     document.getElementById("shit").value = "";
                     document.getElementById("fuck").value = "";
-                    location.reload();
+                    
                     alert('上传成功！');
+                    location.reload();
                 })
                 .catch((error) => {
                     console.error('Error:', error);
