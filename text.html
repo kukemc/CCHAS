@@ -20,7 +20,8 @@
         </style>
     </head>
     <body onload="gettextdata()">
-        <div id="xd" class="loader"></div>
+        <div class="loader"></div>
+        <div id="xd"></div>
         <script>
             function gettextdata(){
                 var urlParams = new URLSearchParams(window.location.search);
@@ -58,7 +59,6 @@
     
                 // 判断div中是否包含子元素
                 if ($div.children().length > 0) {
-                    // 如果div中有元素，查找并删除类名为rotatingElement的元素
                     $('.loader', $div).remove();
                 }
             });
