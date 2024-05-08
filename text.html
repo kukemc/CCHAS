@@ -49,6 +49,20 @@
                 });
                 
             }
+            document.addEventListener('DOMContentLoaded', function() {
+    var rotatingElement = document.getElementById('rotatingElement');
+    
+    // 动画结束事件处理函数
+    function handleAnimationEnd() {
+        // 从DOM中移除旋转元素
+        rotatingElement.parentNode.removeChild(rotatingElement);
+        // 移除事件监听器，防止内存泄漏
+        rotatingElement.removeEventListener('animationend', handleAnimationEnd);
+    }
+    
+    // 添加事件监听器，等待动画结束
+    rotatingElement.addEventListener('animationend', handleAnimationEnd);
+});
         </script>
     </body>
 </html>
