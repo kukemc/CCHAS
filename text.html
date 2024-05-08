@@ -10,14 +10,14 @@
             function gettextdata(){
                 var urlParams = new URLSearchParams(window.location.search);
                 var id = urlParams.has('id') ? urlParams.get('id') : 'ID参数未提供';
-                console.log('http://127.0.0.1:5000/textXD/'+id);
-                fetch('http://127.0.0.1:5000/textXD/'+id)
-                    .then(response =>{
+                console.log('http://api.cs2dcn.site/textXD/'+id);
+                fetch('http://api.cs2dcn.site/textXD/'+id)
+                    。then(response =>{
                         if(response.ok){
                             return response.text();
                         }
                     })
-                    .then(data =>{
+                    。then(data =>{
                         console.log(data); 
                         var container = document.getElementById('xd');
                         var newElement = document.createElement('h2');
